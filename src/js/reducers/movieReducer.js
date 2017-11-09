@@ -1,6 +1,6 @@
 const defaultState = {
     status: 'NONE',
-    movieList: [],
+    titles: []
 }
 
 export default function MovieReducer(state = defaultState, { type,payload }){
@@ -12,13 +12,9 @@ export default function MovieReducer(state = defaultState, { type,payload }){
         }
 
         case 'GET_MOVIE_SUCCESS': {
-            console.log(payload.Search);
             return {
                 ...state,
-                movieList: [
-                    ...state.movieList,
-                    payload.Search
-                ]
+                titles: payload
             }
         }
 
