@@ -33,9 +33,9 @@ class MovieSearchContainer extends Component {
                         <label htmlFor='search'>Search movies</label>
                     </div>
                     <div className='input-field cold s2'>
-                    <a className='btn waves-effect waves-light'
-                        onClick={this.handleSearchClick}>
-                        Go!
+                        <a className='btn waves-effect waves-light'
+                            onClick={this.handleSearchClick}>
+                            Go!
                     </a>
                     </div>
                 </div>
@@ -44,14 +44,20 @@ class MovieSearchContainer extends Component {
                         movieTitles.length &&
                         movieTitles.map((movie, index) => {
                             return (
-                                <a href={'#/movie/' + movie.imdbID}>
-                                    <div key={index}
-                                        className='col s12 m6 l4 xl3 center-align'>
-                                        <h6 className='movie-list-year'>{movie.Year}</h6>
-                                        <img className='movie-list-poster' src={movie.Poster} alt='movie poster' />
-                                        <h4 className='movie-list-title'>{movie.Title}</h4>
-                                    </div>
-                                </a>
+                                <div key={index}
+                                    className='col s12 m3'>
+                                    <a href={'#/movie/' + movie.imdbID}>
+                                        <div className='card'>
+                                            <div className='card-image'>
+                                                <img src={movie.Poster} alt='movie poster' />
+                                            </div>
+                                            <div className='card-content'>
+                                                <span className='card-title'>{movie.Title}</span>
+                                                <p className='movie-list-year'>{movie.Year}</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
                             );
                         })
                     }

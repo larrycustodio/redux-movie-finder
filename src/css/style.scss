@@ -2,6 +2,17 @@ body {
   background: #c9d6ff; /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #c9d6ff, #e2e2e2); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to top, #c9d6ff, #e2e2e2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  display: flex;
+  flex-direction: column;
   font-size: 1em;
   min-height: 100vh;
+}
+main {
+  flex: 1 0 auto;
+}
+a,
+a:focus,
+a:hover,
+a:visited {
+  color: inherit;
 }
