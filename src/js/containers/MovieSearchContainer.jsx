@@ -29,12 +29,12 @@ class MovieSearchContainer extends Component {
                         <input type='text'
                             className='form-control'
                             placeholder='Search for...'
-                            value={this.state.searchItem}
-                            onChange={this.handleInputChange} />
+                            value={ this.state.searchItem }
+                            onChange={ this.handleInputChange } />
                         <span className='input-group-btn'>
                             <button className='btn btn-primary'
                                 type='button'
-                                onClick={this.handleSearchClick}
+                                onClick={ this.handleSearchClick }
                             >Go!</button>
                         </span>
                     </div>
@@ -55,7 +55,7 @@ class MovieSearchContainer extends Component {
                                         Mauris vitae iaculis ante. Donec quis dolor vel diam imperdiet
                                         pharetra ut et massa.
                                     </p>
-                                    <a href={'#/movie/' + movie.imdbID} className="btn btn-info">More information</a>
+                                    <a href={ '#/movie/' + movie.imdbID } className="btn btn-info">More information</a>
                                 </div>
                             );
                         })
@@ -66,9 +66,11 @@ class MovieSearchContainer extends Component {
     }
 }
 
-const mapStoreToProps = ({ movies }) => ({
-    movies
-});
+const mapStoreToProps = (store) => {
+    return {
+        movies: store.titles
+    }
+}
 
 // Tie in the actions to the component with { connect }
 export default connect(mapStoreToProps, { getMovieSearch })(MovieSearchContainer);

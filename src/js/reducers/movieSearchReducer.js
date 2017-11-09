@@ -3,17 +3,19 @@ const defaultState = {
     titles: []
 }
 
-export default function MovieReducer(state = defaultState, { type,payload }){
+export default function MovieSearchReducer(state = defaultState, { type,payload }){
     switch(type){
         case 'GET_MOVIE': {
             return {
                 ...state,
+                status: 'PENDING',
             }
         }
 
         case 'GET_MOVIE_SUCCESS': {
             return {
                 ...state,
+                status: 'SUCCESS',
                 titles: payload
             }
         }
@@ -21,7 +23,7 @@ export default function MovieReducer(state = defaultState, { type,payload }){
         case 'GET_MOVIE_ERROR': {
             return {
                 ...state,
-                status: 'error',
+                status: 'ERROR',
                 error: payload,
             }
         }
