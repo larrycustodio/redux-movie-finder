@@ -32,10 +32,12 @@ class MovieSearchContainer extends Component {
                             onChange={this.handleInputChange} />
                         <label htmlFor='search'>Search movies</label>
                     </div>
-                    <a className='col s2 waves-effect waves-light btn'
+                    <div className='input-field cold s2'>
+                    <a className='btn waves-effect waves-light'
                         onClick={this.handleSearchClick}>
                         Go!
                     </a>
+                    </div>
                 </div>
                 <div className='row'>
                     {movieTitles &&

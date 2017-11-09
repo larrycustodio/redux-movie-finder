@@ -31,24 +31,25 @@ export const getMovieSearch = searchItem => {
 export const getMovieDetails = movieTitle => {
     return (dispatch) => {
         dispatch({
-            type: 'GET_MOVIE_DETAILS'
+            type: 'GET_MOVIE_DETAIL'
         });
         axios
         .get('http://www.omdbapi.com/', {
             params: {
                 i: movieTitle,
                 apikey: 'e3a3c34f',
+                plot: 'full'
             }
         })
         .then(res => {
             dispatch({
-                type: 'GET_MOVIE_SUCCESS',
+                type: 'GET_MOVIE_DETAIL_SUCCESS',
                 payload: res.data
             });
         })
         .catch(err => {
             dispatch({
-                type: 'GET_MOVIE_ERROR',
+                type: 'GET_MOVIE_DETAIL_ERROR',
                 payload: err,
             });
         });
