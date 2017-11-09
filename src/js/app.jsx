@@ -10,7 +10,7 @@ export default class App extends Component {
         <div className='container'>
           <div className='jumbotron m-1'>
             <div className='container'>
-              <h1 className='display-3'>Movie Finder</h1>
+              <a href='#'><h1 className='display-3'>Movie Finder</h1></a>
               <p className='lead'>Movie movie movie yay!</p>
             </div>
           </div>
