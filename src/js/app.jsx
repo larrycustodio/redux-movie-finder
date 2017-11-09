@@ -8,9 +8,14 @@ export default class App extends Component {
     return (
       <Router>
         <div className='container'>
-          <h1>Hello Larry</h1>
-          <Route exact path='/' component= { MovieSearchContainer } />
-          <Route path='/movie/:id' component= { MovieDetailContainer } />
+          <div className='jumbotron m-1'>
+            <div className='container'>
+              <h1 className='display-3'>Movie Finder</h1>
+              <p className='lead'>Movie movie movie yay!</p>
+            </div>
+          </div>
+          <Route exact path='/' component={MovieSearchContainer} />
+          <Route path='/movie/:id' component={MovieDetailContainer} />
         </div>
       </Router>
     );
