@@ -7,11 +7,11 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-      <div className='container'>
-        <h1>Hello Larry</h1>
-        <Route exact path='/' component= { MovieSearchContainer } />
-        <Route path='/movie/:id' component= { MovieDetailContainer } />
-      </div>
+        <div className='container'>
+          <h1>Hello Larry</h1>
+          <Route exact path='/' component= { MovieSearchContainer } />
+          <Route path='/movie/:id' component= { MovieDetailContainer } />
+        </div>
       </Router>
     );
   }
