@@ -16,3 +16,11 @@ a:hover,
 a:visited {
   color: inherit;
 }
+
+.search-result {
+  transition: transform 0.33s ease;
+  &:hover {
+    transition: transform 0.33s ease;
+    transform: scale(1.05);
+  }
+}

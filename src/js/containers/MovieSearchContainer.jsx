@@ -45,7 +45,7 @@ class MovieSearchContainer extends Component {
                         movieTitles.map((movie, index) => {
                             return (
                                 <div key={index}
-                                    className='col s12 m3'>
+                                    className='col s12 m3 search-result'>
                                     <a href={'#/movie/' + movie.imdbID}>
                                         <div className='card'>
                                             <div className='card-image'>
