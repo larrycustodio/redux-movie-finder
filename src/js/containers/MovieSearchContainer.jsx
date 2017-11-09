@@ -24,39 +24,32 @@ class MovieSearchContainer extends Component {
         return (
             <div className='container'>
                 <div className='row'>
-                    <small className='text-muted'>What movie did you have in mind?</small>
-                    <div className='input-group'>
-                        <input type='text'
-                            className='form-control'
-                            placeholder='Search for...'
-                            value={ this.state.searchItem }
-                            onChange={ this.handleInputChange } />
-                        <span className='input-group-btn'>
-                            <button className='btn btn-primary'
-                                type='button'
-                                onClick={ this.handleSearchClick }
-                            >Go!</button>
-                        </span>
+                    <div className='input-field col s10'>
+                        <input id='search'
+                            type='text'
+                            className='validate'
+                            value={this.state.searchItem}
+                            onChange={this.handleInputChange} />
+                        <label htmlFor='search'>Search movies</label>
                     </div>
+                    <a className='col s2 waves-effect waves-light btn'
+                        onClick={this.handleSearchClick}>
+                        Go!
+                    </a>
                 </div>
                 <div className='row'>
-                    {   movieTitles &&
+                    {movieTitles &&
                         movieTitles.length &&
                         movieTitles.map((movie, index) => {
                             return (
-                                <div
-                                    key={index}
-                                    className='card m-1 col-md-3 col-lg-6'>
-                                    <h4 className='card-title'>{movie.Title}</h4>
-                                    <small className='text-muted'>{movie.Year}</small>
-                                    <p className='card-text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Sed tortor sapien, elementum sed ullamcorper quis, vehicula sed ex.
-                                        Nullam sed risus vulputate, maximus lectus et, tincidunt est.
-                                        Mauris vitae iaculis ante. Donec quis dolor vel diam imperdiet
-                                        pharetra ut et massa.
-                                    </p>
-                                    <a href={ '#/movie/' + movie.imdbID } className="btn btn-info">More information</a>
-                                </div>
+                                <a href={'#/movie/' + movie.imdbID}>
+                                    <div key={index}
+                                        className='col s12 m6 l4 xl3 center-align'>
+                                        <h6 className='movie-list-year'>{movie.Year}</h6>
+                                        <img className='movie-list-poster' src={movie.Poster} alt='movie poster' />
+                                        <h4 className='movie-list-title'>{movie.Title}</h4>
+                                    </div>
+                                </a>
                             );
                         })
                     }

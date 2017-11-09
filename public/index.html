@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>movie-finder</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script src="bundle.js"></script>
-  </body>
+
+<head>
+  <meta charset='utf-8'>
+  <title>movie-finder</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css'>
+  <!-- <link rel='stylesheet' href='css/style.css'> -->
+</head>
+
+<body>
+  <nav class='red darken-2' role='navigation'>
+    <div class='nav-wrapper container'>
+      <a id='logo-container' href='#' class='brand-logo left'>n'Chill</a>
+      <a href='#' data-activates='nav-mobile' class='button-collapse right'>
+        <i class='material-icons'>menu</i>
+      </a>
+    </div>
+  </nav><!-- End Navigation -->
+  <div id='root'></div><!-- End App -->
+  <script src='bundle.js'></script>
+</body>
 </html>
