@@ -5,6 +5,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './rootReducer';
 import App from './app';
+import style from '../css/style.scss';
 
 /* eslint-disable no-underscore-dangle */
 const store = createStore(
