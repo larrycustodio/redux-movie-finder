@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --watch",
     "prod": "webpack -p",
-    "start": "webpack && nodemon server/index.js",
+    "start": "node server",
     "less": "lessc src/css/style.less dist/css/style.css",
     "lint": "eslint .",
     "test": "npm run build && mocha test/setup.js test/*.spec.js"
