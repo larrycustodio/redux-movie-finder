@@ -5,6 +5,7 @@
   "main": "server/index.js",
   "scripts": {
     "build": "webpack --watch",
+    "prod": "webpack -p",
     "start": "webpack && nodemon server/index.js",
     "less": "lessc src/css/style.less dist/css/style.css",
     "lint": "eslint .",

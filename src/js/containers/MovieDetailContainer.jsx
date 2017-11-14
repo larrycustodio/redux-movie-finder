@@ -11,10 +11,10 @@ class MovieDetailContainer extends Component {
     }
     render() {
         const movieData = this.props.movie;
-        console.log(movieData);
         if(!movieData.Response){
             return (
                 <div className='loading'>
+                Loading...
                 </div>
             )
         } else {

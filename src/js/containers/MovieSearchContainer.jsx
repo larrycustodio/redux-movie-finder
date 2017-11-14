@@ -16,7 +16,8 @@ class MovieSearchContainer extends Component {
             searchItem: e.target.value
         });
     }
-    handleSearchClick() {
+    handleSearchClick(e) {
+        e.preventDefault();
         this.props.getMovieSearch(this.state.searchItem);
     }
     render() {
@@ -24,19 +25,17 @@ class MovieSearchContainer extends Component {
         return (
             <div className='container'>
                 <div className='row'>
-                    <div className='input-field col s10'>
-                        <input id='search'
-                            type='text'
-                            className='validate'
-                            value={this.state.searchItem}
-                            onChange={this.handleInputChange} />
-                        <label htmlFor='search'>Search movies</label>
-                    </div>
-                    <div className='input-field cold s2'>
-                        <a className='btn waves-effect waves-light'
-                            onClick={this.handleSearchClick}>
-                            Go!
-                    </a>
+                    <div className='card'>
+                        <form onSubmit={this.handleSearchClick}>
+                            <div className='input-field'>
+                                <input id='search'
+                                    type='search'
+                                    placeholder='Search movies'
+                                    value={this.state.searchItem}
+                                    onChange={this.handleInputChange}
+                                    required />
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <div className='row'>
@@ -45,15 +44,19 @@ class MovieSearchContainer extends Component {
                         movieTitles.map((movie, index) => {
                             return (
                                 <div key={index}
-                                    className='col s12 m3 search-result'>
+                                    className='col s12 m6 lg4 search-result'>
                                     <a href={'#/movie/' + movie.imdbID}>
                                         <div className='card'>
                                             <div className='card-image'>
-                                                <img src={movie.Poster} alt='movie poster' />
+                                                {movie.Poster == 'N/A' ?
+                                                    <div className='card-no-img'/>
+                                                    :
+                                                    <img src={ movie.Poster } alt='movie poster' />
+                                                }  
                                             </div>
                                             <div className='card-content'>
-                                                <span className='card-title'>{movie.Title}</span>
-                                                <p className='movie-list-year'>{movie.Year}</p>
+                                                <span className='card-title'>{ movie.Title.substr(0,12) + '...' }</span>
+                                                <p className='movie-list-year'>{ movie.Year }</p>
                                             </div>
                                         </div>
                                     </a>
