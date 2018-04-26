@@ -53,7 +53,7 @@ class MovieSearchContainer extends Component {
     }
     componentDidMount() {
         this.props.getMovieGenres();
-        this.props.getRecentMovies();
+        if(!this.props.trending.uploaded) this.props.getRecentMovies();
     }
     handleInputChange(e) {
         this.setState({

@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    height: 100%;
 }
 
 a,
@@ -35,3 +36,4 @@ a:visited {
 @import "header";
 @import "navbar";
 @import "movie-list";
+@import "movie-details";

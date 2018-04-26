@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Star } from '../icons';
 import {
     getMovieDetails,
     setMovieDetails
 } from '../actions/movieActions';
 
+import {
+    setImgAlt,
+    setImgURL
+} from '../helpers';
+
 class MovieDetailContainer extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
     }
 
@@ -26,20 +32,41 @@ class MovieDetailContainer extends Component {
             // Render state with data uploaded
             const { movie } = this.props;
             return (
-                <section className="container">
-                    <header className="movie-header">
-                        <h1>{movie.title}</h1>
-                    </header>
-                    <article className="movie-overview">
-                        <p>{movie.overview}</p>
-                    </article>
+                <section className="container movie-details">
+                    <div className="backdrop"
+                        data-src-path={setImgURL(movie.backdrop_path, 780)} />
+                    <div className="content">
+                        <header className="header">
+                            <h1 className="title">{movie.original_title}</h1>
+                            <div className="meta">
+                                <div className="rating">
+                                    {movie.vote_average} /10
+                                </div>
+                                <div className="rating-icon">
+                                    {Star()}
+                                </div>
+                                <div className="genre">
+                                    {movie.genre_ids.map(id => <span key={id}>{id}</span>)}
+                                </div>
+                            </div>
+                        </header>
+                        <article className="overview">
+                            <p>{movie.overview}</p>
+                        </article>
+                    </div>
+                    <div className="poster">
+                        <img
+                            className="poster-img"
+                            src={setImgURL(movie.poster_path, 342)}
+                            alt={setImgAlt(movie.title)} />
+                    </div>
                 </section>
             );
         } else {
             // Render state with data loading
             return (
                 <section className="container">
-                Loading loading...
+                    Loading movie details...
                 </section>
             );
         };
