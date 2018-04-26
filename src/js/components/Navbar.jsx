@@ -1,27 +1,28 @@
 import React from 'react';
-import { Popcorn, Search } from '../icons';
+import { NavLink } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = props => {
+    const links = [
+        { name: 'Home', to: '/' },
+        { name: 'Movies', to: '/movies' },
+        { name: 'FAQ', to: '/faq' }
+    ];
     return (
         <nav className="nav">
-            <div className="nav-banner">
-                <div className="nav-logo">
-                    {Popcorn()}
-                </div>
-                <div className="nav-title">MovieFinder</div>
-            </div>
-            <form className="nav-searchbar">
-                <input
-                    className="nav-searchinput"
-                    type="text"
-                    placeholder="Find a movie" />
-                <input
-                    className="nav-searchreset"
-                    type="reset"
-                    value="x" />
-            </form>
+            {
+                links.map(link =>
+                    <NavLink
+                        key={link.name}
+                        to={link.to}
+                        className="nav-link"
+                        activeClassName="selected"
+                    >
+                        {link.name}
+                    </NavLink>
+                )
+            }
         </nav>
     )
-};
+}
 
 export default Navbar;

@@ -1,0 +1,31 @@
+.movie-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+.poster-container {
+    width: 200px;
+    height: 285px;
+    box-shadow: 0px 2px 1px 0px rgba(51, 40, 46, 0.98);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 0.5em;
+}
+.movie-item {
+    flex: 1 0 100%;
+
+    .movie-title {
+        color: #1b1515;
+        font-family: Roboto;
+        font-size: 0.95em;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+    
+    @media (min-width: 768px){
+        flex: 1 0 50%;
+    }
+    @media (min-width: 1280px){
+        flex: 1 0 25%;
+    }
+}

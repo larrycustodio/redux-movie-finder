@@ -1,0 +1,68 @@
+.header {
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    font-family: Roboto;
+    justify-content: space-between;
+    padding: 3em;
+    color: #c33f3f;
+    @media(min-width: 768px) {
+        padding: 1.5em 4em;
+    }
+}
+
+.header-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-logo {
+    svg {
+        height: 3.5em;
+    }
+}
+
+.header-title {
+    font-size: 3.25em;
+    font-weight: 800;
+    margin-left: 0.25em;
+    text-transform: uppercase;
+}
+
+.header-searchbar {
+    display: flex;
+}
+
+.header-searchinput {
+    background: rgb(230, 230, 230);
+    border: none;
+    border-radius: 4px;
+    color: rgb(176, 176, 176);
+    font-size: 1em;
+    padding: 0.5em 0.75em;
+    transition: all 350ms ease;
+    &:hover,
+    &:active,
+    &:focus {
+        outline: none;
+    }
+    &:focus {
+        background: rgb(214, 214, 214);
+        color: rgb(130, 57, 57);
+        padding: 0.5em 1.5em;
+    }
+}
+
+.header-searchreset {
+    align-items: center;
+    background-color: rgb(110, 110, 110);
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    margin-left: 0.25em;
+    padding: 0.3em 0.6em;
+    font-size: 1.15em;
+}

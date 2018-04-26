@@ -2,8 +2,8 @@ import { types } from '../actions/movieActions';
 
 const defaultState = {
     uploaded: false,
-    error: true,
-    data: []
+    error: false,
+    data: {}
 };
 
 export default function latestMovieReducer(state = defaultState, { type, payload }) {

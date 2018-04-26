@@ -17,7 +17,6 @@ const store = createStore(
 );
 /* eslint-enable */
 
-
 render(
   <Provider store={ store }>
     <App />
