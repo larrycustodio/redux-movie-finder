@@ -1,58 +1,60 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getMovieDetails } from '../actions/movieActions';
+import {
+    getMovieDetails,
+    setMovieDetails
+} from '../actions/movieActions';
 
 class MovieDetailContainer extends Component {
-    constructor(props) {
+    constructor(props){
         super(props);
     }
-    componentWillMount() {
-        this.props.getMovieDetails(this.props.match.params.id);
+
+    componentDidMount() {
+        const { getMovieDetails, setMovieDetails, trending, titles, match } = this.props;
+        // Perform search on trending, pass to details state if it exists
+        const isTrendingMovie = trending.data.filter(movie => movie.id == match.params.id);
+        if (isTrendingMovie.length) {
+            setMovieDetails(isTrendingMovie[0]);
+        } else {
+            // Perform an API request if the details is not in store
+        }
     }
     render() {
-        const movieData = this.props.movie;
-        if (!movieData.Response) {
+        const { uploaded } = this.props.movie;
+        if (uploaded) {
+            // Render state with data uploaded
+            const { movie } = this.props;
             return (
-                <div className='loading'>
-                    Loading...
-                </div>
-            )
-        } else {
-            return (
-                <div className='container'>
-                    <div className='movie-header'>
-                        <h1 className='display-2'>{movieData.Title}</h1>
-                        <div className='display-3'>{movieData.Year}</div>
-                        <span className=''>{movieData.Rated}</span> | <span className=''>{movieData.Runtime}</span> |
-                        {
-                            movieData.Ratings.map(rating => {
-                                return (
-                                    <span key={rating.Source.toLowerCase().replace(/( )/g, '-')}
-                                        className=''>
-                                        &nbsp;{rating.Value}&nbsp;|
-                                    </span>
-                                );
-                            })
-                        }
-                    </div>
-                    <div className='row'>
-                        <div className='col-md-4'>
-                            <img className='img-fluid' src={movieData.Poster} />
-                        </div>
-                        <div className='col-md-8'>
-                            {movieData.Plot}
-                        </div>
-                    </div>
-                </div>
+                <section className="container">
+                    <header className="movie-header">
+                        <h1>{movie.title}</h1>
+                    </header>
+                    <article className="movie-overview">
+                        <p>{movie.overview}</p>
+                    </article>
+                </section>
             );
-        }
+        } else {
+            // Render state with data loading
+            return (
+                <section className="container">
+                Loading loading...
+                </section>
+            );
+        };
     }
 }
 
 const mapStoreToProps = (store) => {
     return {
-        movie: store.movie
+        movie: store.movie,
+        trending: store.trending
     }
 }
 
-export default connect(mapStoreToProps, { getMovieDetails })(MovieDetailContainer);
+const actionCreators = {
+    getMovieDetails,
+    setMovieDetails
+}
+export default connect(mapStoreToProps, actionCreators)(MovieDetailContainer);

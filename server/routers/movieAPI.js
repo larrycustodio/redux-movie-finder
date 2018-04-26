@@ -5,10 +5,10 @@ const express = require('express');
 const router = express.Router();
 
 /**
- * Returns latest movies from API
- * Method GET: <URL>/api/movies/latest
+ * Returns trending movies from API
+ * Method GET: <URL>/api/movies/trending
  */
-router.get('/movies/latest', (req, res) => {
+router.get('/movies/trending', (req, res) => {
     // TESTING - spoof a long response 
     setTimeout(function(){
         res.json(data);     

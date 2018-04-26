@@ -6,23 +6,23 @@ const defaultState = {
     data: {}
 };
 
-export default function latestMovieReducer(state = defaultState, { type, payload }) {
+export default function trendingMovieReducer(state = defaultState, { type, payload }) {
     switch (type) {
-        case `${types.GET_MOVIE_LATEST}_PENDING`: {
+        case `${types.GET_MOVIE_TRENDING}_PENDING`: {
             return {
                 ...state,
                 ...payload
             }
         }
 
-        case `${types.GET_MOVIE_LATEST}_SUCCESS`: {
+        case `${types.GET_MOVIE_TRENDING}_SUCCESS`: {
             return {
                 ...state,
                 ...payload
             }
         }
 
-        case `${types.GET_MOVIE_LATEST}_ERROR`: {
+        case `${types.GET_MOVIE_TRENDING}_ERROR`: {
             return {
                 ...state,
                 ...payload

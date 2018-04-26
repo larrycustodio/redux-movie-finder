@@ -1,47 +1,41 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import { setImgAlt, setImgURL } from '../helpers';
 
 /**
- * Converts movie title in kebab-lowercase form
- * @param {String} movie title 
- * @return {String} title-in-kebab-case
- */
-function setImgAlt(title) {
-    return title.toLowerCase().replace('/( )/', '-');
-}
-
-/**
- * Returns image URL
- * @param {String} rel img-path provided by API
- * @param {Integer} desired width size
- * @reutn {String} tmdb image URL
- */
-function setImgURL(path, size = 200) {
-    return `https://image.tmdb.org/t/p/w${size}${path}`;
-}
-
-/**
- * Container for single movie item at "in theaters" component
+ * Single movie item component at "in theaters" component
  * @param {Object} movie metadata 
  */
-const LatestMovieItem = props => {
+const TrendingMovieItem = props => {
     const { movie } = props;
+    const mouseOverHandler = ({ target }) => {
+        if (target.nodeName == 'IMG') {
+            target.parentNode.classList.add('active');
+        }
+    };
+    const mouseOutHandler = ({ target }) => {
+        if (target.nodeName == 'IMG') {
+            target.parentNode.classList.remove('active');
+        }
+    };
     return (
-        <div className="movie-item latest-movie">
+        <Link
+            to={`/movies/${movie.id}`}
+            className="movie-item trending-movie"
+            onMouseOver={mouseOverHandler}
+            onMouseOut={mouseOutHandler}
+        >
             <div className="poster-container">
                 <img className="poster-img" src={setImgURL(movie.poster_path)} alt={setImgAlt(movie.title)} />
             </div>
-            <div className="movie-title">
-                {movie.title}
-            </div>
-        </div>
+        </Link>
     );
 }
 /**
- * Container for "in theaters" front page component
- * @param {Object} latest movie store props 
+ * Container for "trending" front page component
+ * @param {Object} trending movie store props 
  */
-const LatestMovies = props => {
+const TrendingMovies = props => {
     const { error, uploaded, data } = props.movies;
     if (error) {
         // render state @ error occurring
@@ -56,8 +50,8 @@ const LatestMovies = props => {
             return (
                 <div className="movie-container">
                     {
-                        data.map(movie =>
-                            <LatestMovieItem
+                        [...data.slice(0, 10)].map(movie =>
+                            <TrendingMovieItem
                                 key={`movie-${movie.id}`}
                                 movie={movie} />)
                     }
@@ -74,4 +68,4 @@ const LatestMovies = props => {
     }
 };
 
-export default LatestMovies;
+export default TrendingMovies;

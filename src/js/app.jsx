@@ -4,6 +4,7 @@ import HomePageContainer from './containers/HomePageContainer';
 import MovieListPage from './containers/MoviePageContainer';
 import MovieDetailContainer from './containers/MovieDetailContainer';
 import SiteHeader from './components/SiteHeader';
+import Navbar from './components/Navbar';
 
 export default class App extends Component {
   render() {
@@ -11,11 +12,12 @@ export default class App extends Component {
       <Router>
         <div className='app'>
           <SiteHeader />
+          <Navbar />
           <Route exact path='/' component={HomePageContainer} />
-          <Route exact path='/movie' component={MovieListPage} />
-          <Route path='/movie/:id' component={MovieDetailContainer} />
+          <Route exact path='/movies' component={MovieListPage} />
+          <Route path='/movies/:id' component={MovieDetailContainer} />
         </div>
       </Router>
     );
-  }
-}
+  };
+};

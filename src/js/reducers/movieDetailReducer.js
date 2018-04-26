@@ -1,5 +1,5 @@
 const defaultState = {
-    Response: false
+    uploaded: false,
 };
 
 export default function MovieTitlesReducer(state = defaultState, { type,payload }){
@@ -20,6 +20,13 @@ export default function MovieTitlesReducer(state = defaultState, { type,payload 
             return {
                 ...state,
                 error: payload,
+            }
+        }
+
+        case 'SET_MOVIE_DETAIL': {
+            return {
+                ...state,
+                ...payload
             }
         }
 

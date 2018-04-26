@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
-import {
-    Link,
-    NavLink
-} from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import Navbar from '../components/Navbar';
-import LatestMovies from '../components/LatestMovies';
+import TrendingMovies from '../components/TrendingMovies';
 
 import {
     getMovieSearch,
@@ -70,14 +65,13 @@ class MovieSearchContainer extends Component {
         this.props.getMovieSearch(this.state.searchItem);
     }
     render() {
-        const { movies, latest } = this.props;
+        const { movies, trending } = this.props;
         const movieTitles = movies.titles.Search;
         return (
             <div className='container'>
-                <Navbar />
                 <section className='section'>
-                    <h1 className='section-title'>In theaters</h1>
-                    <LatestMovies movies={latest} />
+                    <h1 className='section-title'>Trending</h1>
+                    <TrendingMovies movies={trending} />
                 </section>
                 <MovieSearchResults
                     movieTitles={movieTitles}
@@ -90,7 +84,7 @@ class MovieSearchContainer extends Component {
 const mapStoreToProps = (store) => {
     return {
         movies: store.titles,
-        latest: store.latest
+        trending: store.trending
     }
 }
 

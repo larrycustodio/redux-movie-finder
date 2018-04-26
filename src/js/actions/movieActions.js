@@ -2,9 +2,10 @@ import axios from 'axios';
 
 export const types = {
     GET_MOVIE_GENRES: 'GET_MOVIE_GENRES',
-    GET_MOVIE_LATEST: 'GET_MOVIE_LATEST',
+    GET_MOVIE_TRENDING: 'GET_MOVIE_TRENDING',
     GET_MOVIE: 'GET_MOVIE',
-    GET_MOVIE_DETAIL: 'GET_MOVIE_DETAIL'
+    GET_MOVIE_DETAIL: 'GET_MOVIE_DETAIL',
+    SET_MOVIE_DETAIL: 'SET_MOVIE_DETAIL'
 };
 /**
  * Retrieves movie genre description
@@ -44,17 +45,17 @@ export const getMovieGenres = () => {
 export const getRecentMovies = () => {
     return dispatch => {
         dispatch({
-            type: `${types.GET_MOVIE_LATEST}_PENDING`,
+            type: `${types.GET_MOVIE_TRENDING}_PENDING`,
             payload: {
                 uploaded: false
             }
         });
 
-        fetch('/api/movies/latest', { method: 'GET' })
+        fetch('/api/movies/trending', { method: 'GET' })
             .then(res => res.json())
             .catch(error => {
                 dispatch({
-                    type: `${types.GET_MOVIE_LATEST}_ERROR`,
+                    type: `${types.GET_MOVIE_TRENDING}_ERROR`,
                     payload: {
                         error: true,
                         data: []
@@ -63,7 +64,7 @@ export const getRecentMovies = () => {
             })
             .then(data => {
                 dispatch({
-                    type: `${types.GET_MOVIE_LATEST}_SUCCESS`,
+                    type: `${types.GET_MOVIE_TRENDING}_SUCCESS`,
                     payload: {
                         uploaded: true,
                         data: [...data.results]
@@ -103,7 +104,21 @@ export const getMovieSearch = searchItem => {
             });
     };
 };
-
+/**
+ * Sets movie details for selected movie ID
+ * @param {Object} movie metadata 
+ */
+export const setMovieDetails = movieDetails => {
+    return dispatch => {
+        dispatch({
+            type: `${types.SET_MOVIE_DETAIL}`,
+            payload: {
+                uploaded: true,
+                ...movieDetails
+            }
+        })
+    }
+}
 /**
  * Gets movie details for selected movie ID
  * @param {String} movieID from movie API 

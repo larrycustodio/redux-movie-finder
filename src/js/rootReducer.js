@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 import movieSearchReducer from './reducers/movieSearchReducer';
 import movieDetailReducer from './reducers/movieDetailReducer';
-import latestMovieReducer from './reducers/movieLatestReducer';
+import trendingMovieReducer from './reducers/movieTrendingReducer';
 
 const rootReducer = combineReducers({
     titles: movieSearchReducer,
-    latest: latestMovieReducer,
+    trending: trendingMovieReducer,
     movie: movieDetailReducer
 });
 
