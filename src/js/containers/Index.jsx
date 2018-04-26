@@ -79,7 +79,8 @@ class MovieSearchContainer extends Component {
 
 const mapStoreToProps = (store) => {
     return {
-        movies: store.titles
+        movies: store.titles,
+        latest: store.latest
     }
 }
 

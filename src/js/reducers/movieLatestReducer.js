@@ -6,7 +6,7 @@ const defaultState = {
     data: []
 };
 
-export default latestMovieReducer = (state = defaultState, { type, payload }) => {
+export default function latestMovieReducer(state = defaultState, { type, payload }) {
     switch (type) {
         case `${types.GET_MOVIE_LATEST}_PENDING`: {
             return {

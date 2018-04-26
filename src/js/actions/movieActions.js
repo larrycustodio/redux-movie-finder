@@ -8,6 +8,7 @@ export const types = {
 
 /**
  * Gets most recent movies from movie API
+ * Dispatched on initial home page load
  */
 export const getRecentMovies = () => {
     return dispatch => {
@@ -17,7 +18,8 @@ export const getRecentMovies = () => {
                 data: []
             }
         });
-        fetch('/api/movies/latest', { method: 'GET', })
+        
+        fetch('/api/movies/latest', { method: 'GET' })
             .then(res => res.json())
             .catch(error => {
                 dispatch({
