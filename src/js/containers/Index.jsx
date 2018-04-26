@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getMovieSearch } from '../actions/movieActions';
+import {
+    getMovieSearch,
+    getRecentMovies
+} from '../actions/movieActions';
 import { Link } from 'react-router-dom';
 
 class MovieSearchContainer extends Component {
@@ -11,6 +14,9 @@ class MovieSearchContainer extends Component {
         }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSearchClick = this.handleSearchClick.bind(this);
+    }
+    componentDidMount() {
+        this.props.getRecentMovies();
     }
     handleInputChange(e) {
         this.setState({
@@ -78,4 +84,4 @@ const mapStoreToProps = (store) => {
 }
 
 // Tie in the actions to the component with { connect }
-export default connect(mapStoreToProps, { getMovieSearch })(MovieSearchContainer);
+export default connect(mapStoreToProps, { getMovieSearch, getRecentMovies })(MovieSearchContainer);
