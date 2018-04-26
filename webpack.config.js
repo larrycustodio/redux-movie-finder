@@ -33,14 +33,17 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loaders: ['style-loader', 'css-loader', 'sass-loader']
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'sass-loader']
+        })
       }
     ]
   },
 
   plugins: [
     new ExtractTextPlugin({
-        filename: 'dist/styles/main.css',
+        filename: 'styles/main.css',
         allChunks: true
     })
   ]
