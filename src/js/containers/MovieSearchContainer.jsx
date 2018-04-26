@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getMovieSearch } from '../actions/movieActions';
+import { Link } from 'react-router-dom';
 
 class MovieSearchContainer extends Component {
     constructor(props) {
@@ -45,21 +46,21 @@ class MovieSearchContainer extends Component {
                             return (
                                 <div key={index}
                                     className='col s12 m6 lg4 search-result'>
-                                    <a href={'#/movie/' + movie.imdbID}>
+                                    <Link to={`/movie/${movie.imdbID}`}>
                                         <div className='card'>
                                             <div className='card-image'>
                                                 {movie.Poster == 'N/A' ?
-                                                    <div className='card-no-img'/>
+                                                    <div className='card-no-img' />
                                                     :
-                                                    <img src={ movie.Poster } alt='movie poster' />
-                                                }  
+                                                    <img src={movie.Poster} alt='movie poster' />
+                                                }
                                             </div>
                                             <div className='card-content'>
-                                                <span className='card-title'>{ movie.Title.substr(0,12) + '...' }</span>
-                                                <p className='movie-list-year'>{ movie.Year }</p>
+                                                <span className='card-title'>{movie.Title}</span>
+                                                <p className='movie-list-year'>{movie.Year}</p>
                                             </div>
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                             );
                         })

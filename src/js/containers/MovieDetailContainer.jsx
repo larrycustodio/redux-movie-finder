@@ -6,30 +6,30 @@ class MovieDetailContainer extends Component {
     constructor(props) {
         super(props);
     }
-    componentWillMount(){
+    componentWillMount() {
         this.props.getMovieDetails(this.props.match.params.id);
     }
     render() {
         const movieData = this.props.movie;
-        if(!movieData.Response){
+        if (!movieData.Response) {
             return (
                 <div className='loading'>
-                Loading...
+                    Loading...
                 </div>
             )
         } else {
             return (
                 <div className='container'>
                     <div className='movie-header'>
-                        <h1 className='display-2'>{ movieData.Title }</h1>
-                        <div className='display-3'>{ movieData.Year }</div>
-                        <span className=''>{ movieData.Rated }</span> | <span className=''>{ movieData.Runtime }</span> |
+                        <h1 className='display-2'>{movieData.Title}</h1>
+                        <div className='display-3'>{movieData.Year}</div>
+                        <span className=''>{movieData.Rated}</span> | <span className=''>{movieData.Runtime}</span> |
                         {
-                            movieData.Ratings.map(rating=>{
+                            movieData.Ratings.map(rating => {
                                 return (
-                                    <span key={ rating.Source.toLowerCase().replace(/( )/g,'-') }
-                                    className=''>
-                                         &nbsp;{ rating.Value }&nbsp;|
+                                    <span key={rating.Source.toLowerCase().replace(/( )/g, '-')}
+                                        className=''>
+                                        &nbsp;{rating.Value}&nbsp;|
                                     </span>
                                 );
                             })
@@ -37,12 +37,14 @@ class MovieDetailContainer extends Component {
                     </div>
                     <div className='row'>
                         <div className='col-md-4'>
-                            <img className='img-fluid' src={ movieData.Poster } />
+                            <img className='img-fluid' src={movieData.Poster} />
                         </div>
-                        <div className='col-md-8'>{ movieData.Plot }</div>
+                        <div className='col-md-8'>
+                            {movieData.Plot}
+                        </div>
                     </div>
                 </div>
-            );    
+            );
         }
     }
 }
@@ -53,5 +55,4 @@ const mapStoreToProps = (store) => {
     }
 }
 
-// Tie in the actions to the component with { connect }
 export default connect(mapStoreToProps, { getMovieDetails })(MovieDetailContainer);
